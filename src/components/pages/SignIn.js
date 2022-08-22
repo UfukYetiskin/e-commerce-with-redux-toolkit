@@ -42,6 +42,7 @@ const buttonStyle = {
           email  : "",
           password : "",
         }}
+        validationSchema ={signınSchema}
         onSubmit={(values) => {
           alert(`Hoş Geldiniz, ${values.email}`)
       }}

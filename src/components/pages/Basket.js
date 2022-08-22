@@ -2,6 +2,7 @@ import React from 'react'
 import{useSelector, useDispatch} from "react-redux"
 import {useEffect} from 'react'
 import {removeItem} from '../../redux/slices/productsSlice'
+import { NavLink } from 'react-router-dom';
 
 
 function Basket() {
@@ -24,6 +25,15 @@ function Basket() {
     margin : "1%",
     padding : "1%"
   }
+  const buttonStyle = {
+    fontSize : "16px",
+    border :  "0 solid black",
+    backgroundColor : "orange",
+    color : "white",
+    textAlign : "center",
+    borderRadius : "10px", marginLeft : '1%',
+    padding : '5px'
+}
   const dispatch = useDispatch();
   useEffect(() => {},[dispatch, basket])
 
@@ -49,6 +59,9 @@ function Basket() {
 
      <div style={{textAlign : "center"}}>
       <strong>Total Price : {basket && basket.map((item) => item.price).reduce((acc,pilot) => acc + pilot, 0)}</strong>
+      <NavLink to="/buy">
+        <button style={buttonStyle}>Buy</button>
+      </NavLink>
      </div>
     </div>
   )

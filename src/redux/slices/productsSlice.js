@@ -16,6 +16,10 @@ export const productsSlice = createSlice({
     reducers: {
         getProduct : (state, action ) => {
             state.basket.push(action.payload)
+        },
+        removeItem : (state, action) => {
+            const id = action.payload;
+            state.basket.splice(id - 1, 1);
         }
     },
     extraReducers : {
@@ -33,5 +37,5 @@ export const productsSlice = createSlice({
     }
 });
 
-export const {getProduct} = productsSlice.actions;
+export const {getProduct, removeItem} = productsSlice.actions;
 export default productsSlice.reducer;

@@ -1,5 +1,7 @@
 import React from 'react'
-import{useSelector} from "react-redux"
+import{useSelector, useDispatch} from "react-redux"
+import {useEffect} from 'react'
+import {removeItem} from '../../redux/slices/productsSlice'
 
 
 function Basket() {
@@ -22,6 +24,9 @@ function Basket() {
     margin : "1%",
     padding : "1%"
   }
+  const dispatch = useDispatch();
+  useEffect(() => {},[dispatch, basket])
+
   return (
     <div>
      <ul style={ulStyle}>
@@ -35,6 +40,7 @@ function Basket() {
                   <p>{item.title}</p>
                   <p>{item.category}</p>
                   <p>${item.price}</p>
+                  <button onClick={() => dispatch(removeItem(item.id))}>Delete Product</button>
                 </div>
             </li>
         ))

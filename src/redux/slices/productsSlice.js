@@ -11,9 +11,12 @@ export const productsSlice = createSlice({
     initialState : {
         items : [],
         status : "idle",
+        basket : []
     },
     reducers: {
-
+        getProduct : (state, action ) => {
+            state.basket.push(action.payload)
+        }
     },
     extraReducers : {
         [fetchProducts.pending] : (state, action) => {
@@ -30,5 +33,5 @@ export const productsSlice = createSlice({
     }
 });
 
-
+export const {getProduct} = productsSlice.actions;
 export default productsSlice.reducer;

@@ -19,8 +19,18 @@ export const productsSlice = createSlice({
         },
         removeItem : (state, action) => {
             const id = action.payload;
-            state.basket.splice(id - 1, 1);
-        }
+            state.basket = state.basket.splice(id -1 , 1);
+        },
+        increaseFilter : (state, action) => {
+            const pros = action.payload;
+            const sortIncreaseProduct = [...pros].sort((a,b) => a.price - b.price)
+            state.items = sortIncreaseProduct;
+        } ,
+        decreaseFilter : (state, action) => {
+            const pros = action.payload;
+            const sortIncreaseProduct = [...pros].sort((a,b) =>  b.price - a.price)
+            state.items = sortIncreaseProduct;
+        }  
     },
     extraReducers : {
         [fetchProducts.pending] : (state, action) => {
@@ -37,5 +47,5 @@ export const productsSlice = createSlice({
     }
 });
 
-export const {getProduct, removeItem} = productsSlice.actions;
+export const {getProduct, removeItem, increaseFilter, decreaseFilter} = productsSlice.actions;
 export default productsSlice.reducer;

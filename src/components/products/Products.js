@@ -1,13 +1,13 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {useEffect} from 'react'
-import {fetchProducts} from "../../redux/slices/productsSlice"
+import {useEffect, useState} from 'react'
+import {fetchProducts, increaseFilter, decreaseFilter} from "../../redux/slices/productsSlice"
 import { NavLink } from 'react-router-dom'
 
 
 
 function Products() {
-  const products = useSelector(state => state.products.items)
+  let products = useSelector(state => state.products.items)
   const dispatch = useDispatch();
   const status = useSelector(state => state.products.status)
   const error = useSelector(state => state.products.error)
@@ -16,10 +16,15 @@ function Products() {
     if(status === "idle"){
       dispatch(fetchProducts())
     }
-  }, [dispatch, status])
+    dispatch(increaseFilter)
+    dispatch(decreaseFilter)
+  }, [dispatch, status, products])
 
   if (status === "failed"){
     return <div>{error.message}</div>
+  }
+  if(status === "loading"){
+    return <div>Loading...</div>
   }
   const ulStyle = {
     display: "flex",
@@ -37,10 +42,15 @@ function Products() {
     fontWeight : "bold",
     textAlign : "center",
     color :"orange"
-  }
+  } 
+
 
   return (
     <div>
+      <div style={{textAlign : 'end', padding : '1%', margin : '1%'}}>
+        <button onClick={() => dispatch(increaseFilter(products))}>Increased Price</button>
+        <button onClick={() => dispatch(decreaseFilter(products))}>Decreasing Price</button>
+      </div>
       <ul style={ulStyle}>
         {
           products && products.map((item) => (

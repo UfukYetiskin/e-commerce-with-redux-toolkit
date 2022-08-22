@@ -1,5 +1,16 @@
 import React from 'react'
 import {Formik} from 'formik'
+import * as Yup from 'yup'
+
+
+const signınSchema= Yup.object().shape({
+  email : Yup.string().email("Invalid email").required('Required'),
+  password: Yup.string()
+          .required('Please Enter your password')
+          .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,"Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"),
+})
+
+
 function SignIn() {
   const mainDiv = {
     textAlign: 'center',
@@ -36,7 +47,7 @@ const buttonStyle = {
       }}
       >
         {
-          ({handleSubmit,handleChange, values}) => (
+          ({handleSubmit,handleChange, values, errors, touched}) => (
             <form onSubmit={handleSubmit}>
               <input 
                 name = "email"
@@ -47,6 +58,7 @@ const buttonStyle = {
                 style={inputStyle}
               />
               <br></br>
+              {errors.email && touched.email ? <div>{errors.email}</div> : null}
               <input 
                 name = "password"
                 onChange={(handleChange)}
@@ -56,6 +68,7 @@ const buttonStyle = {
                 style={inputStyle}
               />
               <br></br>
+              {errors.password && touched.password ? <div>{errors.password}</div> : null}
               <button style={buttonStyle} type='submit'>Submit</button>
             </form>
           )

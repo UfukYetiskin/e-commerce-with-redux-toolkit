@@ -7,14 +7,20 @@ import SignIn from "./components/pages/SignIn";
 import Product from "./components/product/Product";
 import Signup from "./components/pages/Signup";
 import Buy from "./components/pages/Buy";
+import {useState} from 'react'
 
 function App() {
+  const [thema, setThema] = useState("white");
+
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor : `${thema}`}}>
           
         <div>
         
           <Navbar></Navbar>
+          <div style={{textAlign : 'end'}}>
+            <button onClick={() => setThema(thema === "white" ? "black" : "white")} style={{margin: "1%"}}>Change Background Thema</button>
+          </div>
           <Routes>
             <Route path="/" element={<Products/>}></Route>
             <Route path="/basket" element={<Basket/>}></Route>

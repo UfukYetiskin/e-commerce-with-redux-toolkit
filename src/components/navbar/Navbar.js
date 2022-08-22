@@ -23,18 +23,18 @@ const Navbar = () => {
         <div style={navbarStyle}>
             <ul style={ulStyle}>
                 <li style={{listStyleType : "none"}}>
-                    <NavLink style={{textDecoration :"none"}} to="/">Products</NavLink>
+                    <NavLink style={{textDecoration :"none", color : "orange"}} to="/">Products</NavLink>
                 </li>
             </ul>
             <ul style={ulStyle}>
                 <li style={{listStyleType : "none"}}>
-                    <NavLink  style={{textDecoration :"none"}}  to="/basket">Basket({basket.length})</NavLink>
+                    <NavLink  style={{textDecoration :"none", color : "orange"}}  to="/basket">Basket({basket.length})</NavLink>
                 </li>
                 <li style={{listStyleType : "none", marginLeft :"20px"}}>
-                    <NavLink  style={{textDecoration :"none"}} to="/signin">Sign In</NavLink>
+                    <NavLink  style={{textDecoration :"none", color : "orange"}} to="/signin">Sign In</NavLink>
                 </li>
                 <li style={{listStyleType : "none", marginLeft :"20px"}}>
-                    <NavLink  style={{textDecoration :"none"}} to="/signup">Sign Up</NavLink>
+                    <NavLink  style={{textDecoration :"none", color : "orange"}} to="/signup">Sign Up</NavLink>
                 </li>
             </ul>
         </div>

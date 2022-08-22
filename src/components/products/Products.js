@@ -54,7 +54,7 @@ function Products() {
       <ul style={ulStyle}>
         {
           products && products.map((item) => (
-            <li key={item.id} style={{listStyleType : 'none',border :'1px solid grey',width : '25%', margin : '10px 1%', padding :'1%', backgroundColor  :'smokewhite', boxShadow : "10px black"}} >
+            <li key={item.id} style={{listStyleType : 'none',border :'1px solid grey',width : '25%', margin : '10px 1%', padding :'1%', backgroundColor  :'white', boxShadow : "10px black"}} >
               <img style={{width : '100%', objectFit : "contain", height : "200px"}} src={item.image} alt={item.title} />
               <p style={pStyle}>{item.title}</p>
               <p style={pPriceStyle}>${item.price}</p>

@@ -1,9 +1,25 @@
-
+import ReactDOM from "react-dom/client";
+import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/navbar/Navbar";
+import Products from "./components/products/Products";
+import Basket from "./components/pages/Basket"
+import SignIn from "./components/pages/SignIn";
+import Product from "./components/product/Product";
 
 function App() {
   return (
     <div className="App">
-        selam
+          
+        <div>
+        
+          <Navbar></Navbar>
+          <Routes>
+            <Route path="/" element={<Products/>}></Route>
+            <Route path="/basket" element={<Basket/>}></Route>
+            <Route path="/signin" element={<SignIn/>}></Route>
+            <Route path="/products/:id" element={<Product/>}></Route>
+          </Routes>
+        </div>
     </div>
   );
 }
